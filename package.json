@@ -6,6 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/server.ts",
+    "migrate": "knex migrate:latest",
+    "migrate-rollback": "knex migrate:rollback"
     "start": "ts-node ./src/server.ts"
   },
   "keywords": [],
