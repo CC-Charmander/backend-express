@@ -9,3 +9,17 @@
 201：正常終了
 400：リクエスト不正
 500：サーバーエラー
+
+
+# get_creation_history
+method: get  
+endpoint: /creation_history  
+param {  
+    cocktailId: Int  
+    userId: Int  
+}  
+
+response:  
+200：正常終了  
+400：リクエスト不正  
+500：サーバーエラー  
