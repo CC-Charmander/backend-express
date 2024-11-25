@@ -18,8 +18,11 @@ jobs:
         with:
           node-version: "16" # 必要な Node.js バージョンを指定
 
-      - name: Install dependencies
-        run: npm install
+      # - name: Install dependencies
+      #   run: npm install
+
+      - name: Create deployment package
+        run: zip -r app.zip . -x "node_Modules/*" "*.git/*"
 
       # Elastic Beanstalk アクションを使用してデプロイ
       - name: Deploy to Elastic Beanstalk
