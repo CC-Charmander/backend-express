@@ -34,3 +34,4 @@ jobs:
           environment_name: "Cocktify-env-2" # Elastic Beanstalk の環境名
           version_label: "v-${{ github.run_number }}" # デプロイバージョン
           region: "us-east-1" # Elastic Beanstalk のリージョン
+          file: "app.zip"
