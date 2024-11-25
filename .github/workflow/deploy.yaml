@@ -21,9 +21,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build application (if necessary)
-        run: npm run build # ビルドが必要なら実行
-
       # Elastic Beanstalk アクションを使用してデプロイ
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v21
