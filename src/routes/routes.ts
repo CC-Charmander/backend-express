@@ -5,7 +5,7 @@ import {
   getCreationHistory,
 } from "../controllers/creationHistoryController";
 import { createViewHistory } from "../controllers/viewHistoryController";
-import { getRecipes } from "../controllers/recipesController";
+import { createRecipe, getRecipes } from "../controllers/recipesController";
 
 const router = express.Router();
 
@@ -16,5 +16,7 @@ router.delete("/creation_history", deleteCreationHistoryController);
 router.post("/view_history", createViewHistory);
 
 router.get("/recipes", getRecipes);
+
+router.post("/recipes", createRecipe);
 
 export default router;
