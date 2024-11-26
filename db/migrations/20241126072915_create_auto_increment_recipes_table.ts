@@ -1,7 +1,7 @@
 import type { Knex } from "knex";
 
 export async function up(knex: Knex): Promise<void> {
-  return knex.schema.createTable("recipes", (table) => {
+  await knex.schema.createTable("recipes", (table) => {
     table.increments("idDrink").primary();
     table.string("strDrink").notNullable();
     table.string("strTags");
@@ -19,8 +19,9 @@ export async function up(knex: Knex): Promise<void> {
     table.integer("user_id").unsigned(); // user_idを追加
     table.foreign("user_id").references("user_id").inTable("user"); // 外部キー制約を設定
   });
+  await knex.raw('ALTER SEQUENCE "recipes_idDrink_seq" RESTART WITH 178372');
 }
 
 export async function down(knex: Knex): Promise<void> {
-  knex.schema.dropTable("recipes");
+  await knex.schema.dropTable("recipes");
 }

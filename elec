@@ -1,0 +1,5 @@
+ idDrink | strDrink | strTags | strCategory | strAlcoholic | strGlass | strInstructions | strDrinkThumb | strCreativeCommonsConfirmed | dateModified | ingredients | measures  | user_id 
+---------+----------+---------+-------------+--------------+----------+-----------------+---------------+-----------------------------+--------------+-------------+-----------+---------
+       1 | テスト   |         |             |              |          |                 | テストパス    | No                          |              | ["ジン"]    | ["10 oz"] |       1
+(1 row)
+
