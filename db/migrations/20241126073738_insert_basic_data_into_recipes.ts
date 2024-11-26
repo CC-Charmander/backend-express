@@ -23,12 +23,7 @@ export async function up(knex: Knex): Promise<void> {
   await knex("recipes").del();
 
   // JSONデータを明示的にUTF-8で読み込み
-  const data = JSON.parse(
-    fs.readFileSync(
-      path.resolve(__dirname, "../json_data/cocktails_jp.json"),
-      "utf8"
-    )
-  );
+  const data = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../json_data/cocktails_jp.json"), "utf8"));
 
   // JSONデータをもとに挿入データを生成
   const insertedData = (data as Drink[]).map((drink) => ({
@@ -52,5 +47,5 @@ export async function up(knex: Knex): Promise<void> {
 }
 
 export async function down(knex: Knex): Promise<void> {
-  await knex.schema.dropTable("recipes");
+  await knex("recipes").del();
 }
