@@ -13,6 +13,8 @@ module.exports = {
     database: process.env.DB_NAME,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
+    charset: "utf8",
+    client_encoding: "UTF8",
   },
   migrations: {
     directory: "./db/migrations",
