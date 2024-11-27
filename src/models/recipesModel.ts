@@ -31,5 +31,9 @@ type Recipe = {
 };
 
 export const addRecipe = async (recipe: Recipe) => {
-  await db("recipes").insert(recipe);
+  await db("recipes").insert({
+    ...recipe,
+    ingredients: JSON.stringify(recipe.ingredients),
+    measures: JSON.stringify(recipe.measures)
+  });
 };
