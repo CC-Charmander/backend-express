@@ -5,6 +5,8 @@ import {
   getCreationHistory,
 } from "../controllers/creationHistoryController";
 import { createViewHistory } from "../controllers/viewHistoryController";
+
+import { createFavorite, deleteFavoriteController, getFavorite } from "../controllers/favoritesController";
 import { createRecipe, getRecipes } from "../controllers/recipesController";
 import { getAllIngredients } from "../controllers/ingredientsController";
 
@@ -24,5 +26,9 @@ router.post("/recipes", createRecipe);
 
 //ingredients
 router.get("/ingredients", getAllIngredients);
+
+router.get("/favorites", getFavorite);
+router.post("/favorites", createFavorite);
+router.delete("favorites", deleteFavoriteController);
 
 export default router;
