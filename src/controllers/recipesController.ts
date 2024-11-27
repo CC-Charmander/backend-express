@@ -27,7 +27,6 @@ export const createRecipe = async (req: Request, res: Response) => {
   const body: Body = req.body;
   body.dateModified = new Date();
   body.strCreativeCommonsConfirmed = "No";
-
   await addRecipe(body);
   res.status(200).json();
 };
