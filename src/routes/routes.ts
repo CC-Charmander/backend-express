@@ -31,4 +31,9 @@ router.get("/favorites", getFavorite);
 router.post("/favorites", createFavorite);
 router.delete("favorites", deleteFavoriteController);
 
+// health check用
+router.get("/health_check", (req, res) => {
+  res.status(200).json({"message": "ok"})
+})
+
 export default router;
