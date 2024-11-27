@@ -31,7 +31,7 @@ export const getCreationHistory = async (req: Request, res: Response) => {
     res.status(200).json({ exists: result.length });
   } else if (userId !== undefined) {
     const result = await refferAllCreationHistoryByUserId(userId);
-    res.status(200).json({ creationHistorys: result });
+    res.status(200).json({ creationHistories: result });
   }
   // DBにトランザクション
 };
