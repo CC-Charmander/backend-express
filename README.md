@@ -29,8 +29,11 @@
 | リクエストパラメータ | `"cocktailId": Int`                                         |
 | レスポンス           | 200：正常終了<br>400：リクエスト不正<br>500：サーバーエラー |
 
-## knex にて knexfile.ts を使う方法
+### レシピ作成(投稿)
 
-```sh
-npx knex migrate:latest --knexfile knexfile.ts
-```
+| 項目                 | 内容                                                                                                                                                                                                                                      |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| メソッド             | POST                                                                                                                                                                                                                                      |
+| エンドポイント       | /recipes                                                                                                                                                                                                                                  |
+| リクエストパラメータ | `{ "strDrink": string, "strTags"?: string, "strCategory"?: string, "strAlcoholic"?: string, "strGlass"?: string, "strInstructions"?: string, "strDrinkThumb": string, "ingredients": string[], "measures": number[], "user_id": number }` |
+| レスポンス           | 200：正常終了<br>400：リクエスト不正<br>500：サーバーエラー                                                                                                                                                                               |
