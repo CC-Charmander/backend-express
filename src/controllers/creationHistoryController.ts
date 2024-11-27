@@ -1,5 +1,10 @@
 import { Request, Response } from "express";
-import { addCreationHistory, deleteCreationHistory, refferCreationHistory } from "../models/creationHistoryModel";
+import {
+  addCreationHistory,
+  deleteCreationHistory,
+  refferAllCreationHistoryByUserId,
+  refferCreationHistory,
+} from "../models/creationHistoryModel";
 
 export const createCreationHistory = async (req: Request, res: Response) => {
   type Body = {
@@ -16,9 +21,19 @@ export const createCreationHistory = async (req: Request, res: Response) => {
 };
 
 export const getCreationHistory = async (req: Request, res: Response) => {
-  const result = await refferCreationHistory(req.query);
+  //クエリパラメータがある場合は特定の人の
+
+  const cocktailId = req.query.cocktailId as string | undefined;
+  const userId = req.query.userId as string | undefined;
+
+  if (cocktailId !== undefined && userId !== undefined) {
+    const result = await refferCreationHistory(cocktailId, userId);
+    res.status(200).json({ exists: result.length });
+  } else if (userId !== undefined) {
+    const result = await refferAllCreationHistoryByUserId(userId);
+    res.status(200).json({ creationHistories: result });
+  }
   // DBにトランザクション
-  res.status(200).json({ exists: result.length });
 };
 
 export const deleteCreationHistoryController = async (req: Request, res: Response) => {
