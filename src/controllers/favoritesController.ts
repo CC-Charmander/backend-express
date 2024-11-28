@@ -1,6 +1,12 @@
 import { Request, Response } from "express";
 import { refferRecipes } from "../models/recipesModel";
-import { addFavorite, deleteFavorite, FavoriteTable, refferFavorite } from "../models/favoritesModel";
+import {
+  addFavorite,
+  deleteFavorite,
+  FavoriteTable,
+  refferFavorite,
+  refferFavoriteNum,
+} from "../models/favoritesModel";
 
 export const getFavorite = async (req: Request, res: Response) => {
   const userId = req.query.userId as string | undefined;
@@ -23,6 +29,19 @@ export const getFavorite = async (req: Request, res: Response) => {
     } else if (result.length === 0) {
       res.status(200).json({ exists: 0 });
     }
+  } else if (cocktailId !== undefined) {
+    //いいね数取得API
+    let intCocktailId;
+    try {
+      intCocktailId = parseInt(cocktailId);
+    } catch (e) {
+      res.status(400).end();
+      return;
+    }
+
+    const result = await refferFavoriteNum(intCocktailId);
+
+    res.status(200).json({ favoriteNum: result });
   } else {
     res.status(400).end();
     return;
