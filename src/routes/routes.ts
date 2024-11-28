@@ -29,6 +29,6 @@ router.get("/ingredients", getAllIngredients);
 
 router.get("/favorites", getFavorite);
 router.post("/favorites", createFavorite);
-router.delete("favorites", deleteFavoriteController);
+router.delete("/favorites", deleteFavoriteController);
 
 export default router;
