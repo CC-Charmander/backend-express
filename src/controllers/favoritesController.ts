@@ -46,16 +46,12 @@ export const createFavorite = async (req: Request, res: Response) => {
 };
 
 export const deleteFavoriteController = async (req: Request, res: Response) => {
-  type Body = {
-    cocktailId: number;
-    userId: number;
-  };
-
-  const body: Body = req.body;
+  const userId = req.query.userId as string | undefined;
+  const cocktailId = req.query.cocktailId as string | undefined;
 
   const favo: FavoriteTable = {
-    favoUserId: body.userId,
-    favoIdDrink: body.cocktailId,
+    favoUserId: userId,
+    favoIdDrink: cocktailId,
   };
 
   await deleteFavorite(favo);
