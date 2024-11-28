@@ -18,10 +18,10 @@ export const getFavorite = async (req: Request, res: Response) => {
 
     const result = await refferFavorite(intUserId, intCocktailId);
 
-    if (result.length === 1) {
+    if (result.length >= 1) {
       res.status(200).json({ exists: 1 });
-    } else {
-      res.status(500).json({ exists: 0 });
+    } else if(result.length === 0){
+      res.status(200).json({ exists: 0 });
     }
   } else {
     res.status(400).end();
