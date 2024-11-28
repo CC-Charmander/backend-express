@@ -29,7 +29,7 @@ router.get("/ingredients", getAllIngredients);
 
 router.get("/favorites", getFavorite);
 router.post("/favorites", createFavorite);
-router.delete("favorites", deleteFavoriteController);
+router.delete("/favorites", deleteFavoriteController);
 
 // health check用
 router.get("/health_check", (req, res) => {
