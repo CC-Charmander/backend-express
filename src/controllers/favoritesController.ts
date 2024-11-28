@@ -49,10 +49,11 @@ export const deleteFavoriteController = async (req: Request, res: Response) => {
   const userId = req.query.userId as string | undefined;
   const cocktailId = req.query.cocktailId as string | undefined;
 
-  const favo: FavoriteTable = {
-    favoUserId: userId,
-    favoIdDrink: cocktailId,
-  };
-
-  await deleteFavorite(favo);
+  if (userId !== undefined && cocktailId !== undefined) {
+    const favo: FavoriteTable = {
+      favoIdDrink: parseInt(cocktailId),
+      favoUserId: parseInt(userId),
+    };
+    await deleteFavorite(favo);
+  }
 };
