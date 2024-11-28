@@ -20,7 +20,7 @@ export const getFavorite = async (req: Request, res: Response) => {
 
     if (result.length >= 1) {
       res.status(200).json({ exists: 1 });
-    } else if(result.length === 0){
+    } else if (result.length === 0) {
       res.status(200).json({ exists: 0 });
     }
   } else {
@@ -43,6 +43,7 @@ export const createFavorite = async (req: Request, res: Response) => {
   };
 
   await addFavorite(favo);
+  res.status(200).end();
 };
 
 export const deleteFavoriteController = async (req: Request, res: Response) => {
@@ -55,5 +56,7 @@ export const deleteFavoriteController = async (req: Request, res: Response) => {
       favoUserId: parseInt(userId),
     };
     await deleteFavorite(favo);
+    res.status(200).end();
   }
+  res.status(400).end();
 };
