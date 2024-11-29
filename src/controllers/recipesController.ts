@@ -1,10 +1,27 @@
 import { Request, Response } from "express";
-import { addRecipe, refferRecipes } from "../models/recipesModel";
+import { addRecipe, refferRecipes, refferRecipesByUserId } from "../models/recipesModel";
 
 export const getRecipes = async (req: Request, res: Response) => {
   console.log("request.query:", req.query);
-  const result = await refferRecipes(req.query);
-  res.status(200).json(result);
+
+  const userId = req.query.userId;
+
+  if (typeof userId === "string") {
+    let intUserId;
+    try {
+      intUserId = parseInt(userId);
+    } catch (e) {
+      console.error(e);
+      res.status(400).end();
+      return;
+    }
+
+    const result = await refferRecipesByUserId(intUserId);
+    res.status(200).json(result);
+  } else {
+    const result = await refferRecipes(req.query);
+    res.status(200).json(result);
+  }
 };
 
 export const createRecipe = async (req: Request, res: Response) => {

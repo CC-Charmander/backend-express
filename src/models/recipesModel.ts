@@ -33,3 +33,8 @@ type Recipe = {
 export const addRecipe = async (recipe: Recipe) => {
   await db("recipes").insert(recipe);
 };
+
+export const refferRecipesByUserId = async (userId: number) => {
+  const result = await db("recipes").select("*").where({ user_id: userId }).whereNotNull("user_id");
+  return result;
+};
